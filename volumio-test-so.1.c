@@ -47,7 +47,7 @@ int main()
     int baudrate = 115200;  // default
     char quiet=0;
     char eolchar = '\n';
-    int timeout = 1000;
+    int timeout = 10;
     char buf[buf_max];
 
     strncpy(serialport, "/dev/ttyACM0",sizeof(serialport));
@@ -72,6 +72,8 @@ while(1){
 		   long knobvolume;
 	       long intervolume;
 	       long volume;
+         char vol_buffer [50];
+         sprintf (vol_buffer, "%lu" , (p/100) );
          
 		   
            memset(buf,0,buf_max);  //
@@ -107,13 +109,14 @@ while(1){
            printf("Maximum volume is: %ld\n",max);
 
            if(p!=volume){
-            printf("Bingo!");
+            printf("Bingo!\n");
             //serialport_writebyte(fd,(p/100));
-            serialport_write(fd,"127\n");
+            serialport_write(fd,vol_buffer);
             volume=p;
           }
 
            if(atol(buf)!=0){
+           printf("Buffer after conversion: %ld\n",atol(buf));
 		       volume = atol(buf)*100;
 
            printf("Setting volume to: %ld\n",volume);
