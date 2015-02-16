@@ -57,7 +57,7 @@ int main()
     if(!quiet) printf("opened port %s\n", serialport);
     //serialport_flush(fd);
 
-    while(1) {
+   
 		
            
 	    //fd = serialport_init(serialport, baudrate);
@@ -102,63 +102,37 @@ int main()
            snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
     
     
- 		 if(atol(buf)!=0){
-	   		long x = atol(buf);
-	   		printf("%ld\n",x);
-	  		volume = (-10239 + (atol(buf)*41.72));
-		
-           printf("%ld\n",volume);   
+ 		 
+		       //volume = ;
+           //printf("%ld\n",volume);   
            
 	
            //printf("%ld\n",min);
            //printf("%ld\n",max);
 		
            
-           snd_mixer_selem_set_playback_volume_all(elem, volume);
-           p=volume;
+           
            
 	       //p=volume;
 	       
-	       printf("%ld\n",p); 
-	       printf("First if statement executed\n");
+	       
+	       
 	    
 	   
 	   
-	   }
+	   
 		    
     
-	   else if(atol(buf) == 0){
-
-	   
-	   if(p!=volume){
-	   intervolume=(p+10239)/41.72;
-	   sendvolume=intervolume;
-	   serialport_writebyte(fd,sendvolume);
-	   //serialport_flush(fd);
-	   
-	   printf("%ld\n",volume);
-	   //printf("%ld\n",p);
-	   printf("%i\n",sendvolume);  
-	   printf("Second if statement executed\n");
-	   volume=p;
+	  
 	   
                 
-		}
 		
-		 
-       else
-    { 
-       printf("No change\n");    
-       printf("%ld\n",volume);
-    
-	   
-       //oldvolume=p;     	
-    }
-    }
     
     snd_mixer_selem_get_playback_volume(elem,0,&p);
+    // p=volume;
+     printf("%ld\n",p); 
     snd_mixer_close(handle);
-	}
+	
    
 
 } // end main

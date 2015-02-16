@@ -37,13 +37,13 @@ endif
 
 #################  Common  ##################################################
 
-CFLAGS += $(INCLUDES) -O -Wall -std=gnu99 -lasound -lm
-
+CFLAGS += $(INCLUDES) -O -Wall -std=gnu99  "-I/usr/include/alsa"
+LDFLAGS= -lm -lasound
 
 all: arduino-serial-modified 
 
 arduino-serial-modified: arduino-serial-modified.o arduino-serial-modified-lib.o
-	$(CC) $(CFLAGS) -o arduino-serial-modified$(EXE_SUFFIX) arduino-serial-modified.o arduino-serial-modified-lib.o $(LIBS)
+	$(CC) $(CFLAGS) -o arduino-serial-modified$(EXE_SUFFIX) $(LDFLAGS) arduino-serial-modified.o arduino-serial-modified-lib.o $(LIBS)
 
 arduino-serial-modified-server: arduino-serial-modified-lib.o
 	$(CC) $(CFLAGS) $(CFLAGS_MONGOOSE) -o arduino-serial-modified-server$(EXE_SUFFIX) arduino-serial-modified-server.c  arduino-serial-modified-lib.o mongoose/mongoose.c $(LIBS)
