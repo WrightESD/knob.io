@@ -17,4 +17,6 @@ Compile with: sudo gcc -o knobio-daemon-alpha knobio-daemon-alpha.c arduino-seri
 
 Upload knobio_alpha.ino to the Knobio prototype board using the Arduino IDE version 1.0 or later.
 
+On the Pi run the daemon with the command: sudo ./knobio_daemon_alpha
+
 The Makefile is non-functional at this point so you must manually compile using the above command.
