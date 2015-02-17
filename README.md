@@ -20,3 +20,5 @@ Upload knobio_alpha.ino to the Knobio prototype board using the Arduino IDE vers
 On the Pi run the daemon with the command: sudo ./knobio_daemon_alpha
 
 The Makefile is non-functional at this point so you must manually compile using the above command.
+
+Note: On the system daemon where daemon is being installed libasound2-dev must be installed first.
